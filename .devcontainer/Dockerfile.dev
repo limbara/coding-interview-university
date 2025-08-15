@@ -1,0 +1,4 @@
+FROM golang:1.24.6-bullseye
+RUN groupadd --gid 1000 author \
+  && useradd --uid 1000 --gid author --shell /bin/bash --create-home author
+USER author
