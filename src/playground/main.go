@@ -6,75 +6,123 @@ import (
 )
 
 func main() {
-	// array := array.NewIntDArray()
-	linkedList := linked_list.NewIntSLinkedList()
-	fmt.Printf("Is Linked list empty %v\n", linkedList.Empty())
-	fmt.Printf("Linked list size %v\n", linkedList.Size())
+	dlinkedList := linked_list.NewIntDTLinkedList()
 
-	linkedList.Insert(0, 2)
-	linkedList.PushFront(1)
-	linkedList.PushBack(3)
-	linkedList.Insert(3, 4)
+	// printFront := func() {
+	// 	defer func() {
+	// 		if r := recover(); r != nil {
+	// 			fmt.Printf("Front of the linked list is %v\n", r)
+	// 		}
+	// 	}()
+	// 	fmt.Printf("Front of the linked list is %v\n", dlinkedList.Front())
+	// }
 
-	fmt.Printf("Is Linked list empty %v\n", linkedList.Empty())
+	// printBack := func() {
+	// 	defer func() {
+	// 		if r := recover(); r != nil {
+	// 			fmt.Printf("Back of the linked list is %v\n", r)
+	// 		}
+	// 	}()
+	// 	fmt.Printf("Back of the linked list is %v\n", dlinkedList.Back())
+	// }
 
-	printLinkedList(linkedList)
+	// printAt := func(index int) {
+	// 	defer func() {
+	// 		if r := recover(); r != nil {
+	// 			fmt.Printf("At %v results in %v\n", index, r)
+	// 		}
+	// 	}()
+	// 	prev, current := dlinkedList.At(index)
+	// 	fmt.Printf("At index %v of the linked list prev is %v and current is %v\n", index, prev, current)
+	// }
 
-	for i := range linkedList.Size() {
-		fmt.Printf("Value at index %v is %v\n", i, linkedList.ValueAt(i))
-	}
+	// fmt.Printf("Linked list size is %v\n", dlinkedList.Size())
+	// fmt.Printf("Is linked list empty: %v\n", dlinkedList.Empty())
 
-	fmt.Printf("Front of the linked list is %v\n", linkedList.Front())
-	fmt.Printf("Back of the linked list is %v\n", linkedList.Back())
+	// for v := range 5 {
+	// 	fmt.Printf("PushFront %v\n", v)
+	// 	dlinkedList.PushFront(v)
+	// }
+	// printLinkedList(dlinkedList)
 
-	fmt.Printf("Pop Front of the linked list returns %v\n", linkedList.PopFront())
-	printLinkedList(linkedList)
+	// fmt.Printf("Front of the linked list is %v\n", dlinkedList.Front())
+	// fmt.Printf("Back of the linked list is %v\n", dlinkedList.Back())
 
-	fmt.Printf("Pop Back of the linked list returns %v\n", linkedList.PopBack())
-	printLinkedList(linkedList)
+	// for v := range 5 {
+	// 	fmt.Printf("ValueAt index %v is %v\n", v, dlinkedList.ValueAt(v))
+	// }
 
-	for _, v := range []int{1, 2, 3, 4} {
+	// printLinkedList(dlinkedList)
+
+	// for range 5 {
+	// 	fmt.Printf("PopFront from the linked list results in %v\n", dlinkedList.PopFront())
+	// }
+	// printLinkedList(dlinkedList)
+	// fmt.Printf("Is linked list empty: %v\n", dlinkedList.Empty())
+
+	// printFront()
+
+	// printBack()
+
+	for v := range 5 {
 		fmt.Printf("PushBack %v to linked list\n", v)
-		linkedList.PushBack(v)
+		dlinkedList.PushBack(v)
 	}
+	printLinkedList(dlinkedList)
+	// printAt(0)
+	// printAt(5)
 
-	printLinkedList(linkedList)
+	// printFront()
+	// printBack()
 
-	fmt.Printf("2 nth value from the back of the linked list is %v\n\n", linkedList.NthValueFromEnd(2))
-	fmt.Printf("1 nth value from the back of the linked list is %v\n\n", linkedList.NthValueFromEnd(1))
-
-	for i := range 3 {
-		fmt.Printf("Erase index %v node\n", i)
-		linkedList.Erase(i)
-		printLinkedList(linkedList)
+	for range 5 {
+		fmt.Printf("PopBack from the linked list results in %v\n", dlinkedList.PopBack())
 	}
+	printLinkedList(dlinkedList)
+	// printFront()
+	// printBack()
 
-	for _, v := range []int{1, 2, 3, 4} {
-		fmt.Printf("PushBack %v to linked list\n", v)
-		linkedList.PushBack(v)
+	for v := range 5 {
+		dlinkedList.Insert(0, v)
 	}
-	printLinkedList(linkedList)
+	printLinkedList(dlinkedList)
+	dlinkedList.Insert(0, 10)
+	printLinkedList(dlinkedList)
 
-	fmt.Println("Reversing the linked list")
-	linkedList.Reverse()
-	printLinkedList(linkedList)
+	dlinkedList.Erase(4)
+	printLinkedList(dlinkedList)
 
-	fmt.Println("RemoveValue 4 from linked list")
-	linkedList.RemoveValue(4)
-	printLinkedList(linkedList)
+	fmt.Printf("2 Nth value from the end of the linked list is %v\n", dlinkedList.NthValueFromEnd(2))
 
-	fmt.Println("RemoveValue 4 from linked list")
-	linkedList.RemoveValue(4)
-	printLinkedList(linkedList)
+	dlinkedList.Reverse()
+	printLinkedList(dlinkedList)
 
-	fmt.Println("RemoveValue 4 from linked list")
-	linkedList.RemoveValue(4)
-	printLinkedList(linkedList)
+	fmt.Printf("2 Nth value from the end of the linked list is %v\n", dlinkedList.NthValueFromEnd(2))
+
+	fmt.Println("RemoveValue 0", dlinkedList.RemoveValue(0))
+	printLinkedList(dlinkedList)
+	fmt.Println("RemoveValue 2", dlinkedList.RemoveValue(2))
+	printLinkedList(dlinkedList)
+	fmt.Println("RemoveValue 3", dlinkedList.RemoveValue(3))
+	printLinkedList(dlinkedList)
+	fmt.Println("RemoveValue 4", dlinkedList.RemoveValue(4))
+	printLinkedList(dlinkedList)
+	fmt.Println("RemoveValue 10", dlinkedList.RemoveValue(10))
+	printLinkedList(dlinkedList)
+
+	for v := range 5 {
+		dlinkedList.PushBack(v)
+	}
+	printLinkedList(dlinkedList)
+
+	fmt.Println("Erase index 4")
+	dlinkedList.Erase(4)
+	printLinkedList(dlinkedList)
 }
 
-func printLinkedList(l *linked_list.IntSLinkedList) {
-	fmt.Print("list now holds:\t")
-	linked_list.MapSLinkedList(l, func(node *linked_list.IntSLinkedNode) {
+func printLinkedList(l *linked_list.IntDTLinkedList) {
+	fmt.Print("list now holds:\t\n")
+	linked_list.MapDTLinkedList(l, func(node *linked_list.IntDLinkedNode) {
 		fmt.Printf("%v\t", node.Item)
 	})
 	fmt.Printf("\nsize :\t%v\n\n", l.Size())
